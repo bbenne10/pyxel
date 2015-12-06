@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+
+import fileinput
+import itertools
+import re
+
+
+COLOR = '\x1b[48;2;{r};{g};{b}m'
+COLOR_RESET = '\x1b[39;49m'
+PRINT_TEMPLATES = [
+    '{c}       {r}{c}       {r}{c}       {r}',
+    '{c}       {r}{c}#{t}{r}{c}       {r}',
+    '{c}       {r}{c}       {r}{c}       {r}',
+    ]
+
+HEX_RE = re.compile(r'#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})')
+
+
+def hex_to_rgb(value):
+    lv = len(value)
+    return tuple(int(value[i:i + lv // 3], 16)
+                 for i in range(0, lv, lv // 3))
+
+
+def get_sort_value(color):
+    r, g, b = hex_to_rgb(color)
+    return 0.299 * r + 0.587 * g + 0.114 * b
+
+
+def main():
+    colors = set()
+    for line in fileinput.input():
+        for match in re.findall(HEX_RE, line):
+            if len(match) == 3:
+                match = "{m}{m}".format(m=match)
+            colors.add(match.lower())
+    fileinput.close()
+
+    colors = list(colors)
+    colors = sorted(colors, key=get_sort_value)
+
+    for _, group in itertools.groupby(enumerate(colors),
+                                      lambda x: int(x[0]/3)):
+        g_list = list(group)
+
+        for tmpl in PRINT_TEMPLATES:
+            for _, element in g_list:
+                r, g, b = hex_to_rgb(element)
+                color = COLOR.format(r=r, g=g, b=b)
+                print(tmpl.format(c=color, r=COLOR_RESET,
+                                  t=element), end='')
+            print()
+
+
+if __name__ == '__main__':
+    main()
