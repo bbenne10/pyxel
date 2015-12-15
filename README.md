@@ -15,7 +15,7 @@ future if any interesting new features are python3 only.
 #### Examples
 Pyxel slurps all files provided to it. All of the following examples should work:
 ```
-> pyxel < "#AAA#BBB#CCC #DDD"
+> pyxel < ~/.Xdefaults
 > echo "#AAA#BBB#CCC #DDD" | pyxel
 > echo "#AAA#BBB#CCC #DDD" | pyxel -
 > pyxel ~/.Xdefaults
