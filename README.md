@@ -9,6 +9,9 @@ Pyxel requires a true-color capable terminal to function properly. There are a
 number of such terminals, including KDE's Konsole, iTerm2, all VTE-based terminals,
 and st. This notably excludes urxvt and putty.
 
+Pyxel is currently python2 and python3 compatible. This may change in the
+future if any interesting new features are python3 only.
+
 #### Examples
 Pyxel slurps all files provided to it. All of the following examples should work:
 ```
