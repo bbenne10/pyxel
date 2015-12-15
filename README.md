@@ -1,12 +1,13 @@
 ## Pyxel
-A small python script to show the colors in a text file to a true-color capable terminal.
+A small python script to show the colors in a text file to a true-color capable
+terminal.
 
 Pyxel will read over files provided as input in order to extract and display
 squares of color for each one. These squares are ordered, and thus require
 complete parsing of the input before they can be displayed.
 
 Pyxel requires a true-color capable terminal to function properly. There are a
-number of such terminals, including KDE's Konsole, iTerm2, all VTE-based terminals,
+number of such terminals including KDE's Konsole, iTerm2, all VTE-based terminals,
 and st. This notably excludes urxvt and putty.
 
 Pyxel is currently python2 and python3 compatible. This may change in the
