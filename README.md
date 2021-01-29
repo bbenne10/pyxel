@@ -1,3 +1,5 @@
+# ARCHIVED. New upstream at https://git.bryan-bennett.com/bryan/pyxel
+
 ## Pyxel
 A small python script to show the colors in a text file to a true-color capable
 terminal.
